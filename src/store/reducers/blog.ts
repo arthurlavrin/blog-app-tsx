@@ -48,7 +48,6 @@ const postsReducer = (state = initialState, action: BlogActionTypes): Blog => {
             };
         case DELETE_POST:
             const posts = [...state.posts].filter(e => e.id !== action.postId);
-            console.log(posts);
             return {
                 ...state,
                 posts,

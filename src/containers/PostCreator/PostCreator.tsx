@@ -12,13 +12,17 @@ import { ThunkDispatch } from 'redux-thunk';
 import { AppActions } from '../../types/actions';
 import { bindActionCreators } from 'redux';
 
+interface PostCreatorPageProps {
+    history: any;
+}
+
 interface PostCreatorPageState {
     isFormValid: boolean;
     formControls: object;
     onChange?: any;
 }
 
-type Props = LinkStateProps & LinkDispatchProps;
+type Props = PostCreatorPageProps & LinkStateProps & LinkDispatchProps;
 
 function createFormControls() {
     return {
@@ -56,7 +60,7 @@ class PostCreator extends Component<Props, PostCreatorPageState> {
             isFormValid: false,
             formControls: createFormControls(),
         });
-        this.props.finishCreatePost();
+        this.props.finishCreatePost(this.props.history);
     };
 
     changeHandler = (value: any, controlName: string) => {
@@ -137,7 +141,7 @@ interface LinkStateProps {
 }
 
 interface LinkDispatchProps {
-    finishCreatePost: () => void;
+    finishCreatePost: (history: any) => void;
     savePostInStore: (val: object) => void;
 }
 

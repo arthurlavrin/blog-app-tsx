@@ -13,9 +13,10 @@ export const resetPostCreation = (): AppActions => ({
     type: RESET_POST_CREATION,
 });
 
-export function finishCreatePost() {
+export function finishCreatePost(history: any) {
     return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
         await axios.post('/posts', getState().create.post);
         dispatch(resetPostCreation());
+        history.push('/');
     };
 }

@@ -24,7 +24,7 @@ type Props = PostPageProps & LinkStateProps & LinkDispatchProps;
 
 class PostPage extends Component<Props, {}> {
     componentDidMount() {
-        this.props.fetchPostById(this.props.match.params.id);
+        this.props.fetchPostById(this.props.match.params.id, this.props.history);
     }
 
     render() {
@@ -51,7 +51,7 @@ interface LinkStateProps {
 }
 
 interface LinkDispatchProps {
-    fetchPostById: (id: any) => void;
+    fetchPostById: (id: any, history: any) => void;
 }
 
 const mapStateToProps = (state: AppState, ownProps: PostPageProps): LinkStateProps => ({

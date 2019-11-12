@@ -51,17 +51,17 @@ export function fetchPosts() {
 
 // --------------------------------------
 
-export function fetchPostById(postId: any) {
+export function fetchPostById(postId: any, history: any) {
     return async (dispatch: Dispatch<AppActions>) => {
         dispatch(fetchPostsStart());
         try {
             const response = await axios.get(`/posts/${postId}?_embed=comments`);
             const post = response.data;
 
-            console.log(post);
             dispatch(fetchPostSuccess(post));
         } catch (e) {
             dispatch(fetchPostsError(e));
+            history.push('/');
         }
     };
 }
@@ -75,6 +75,7 @@ export function deletePost(postId: any, history: any) {
             history.push('/');
         } catch (e) {
             dispatch(fetchPostsError(e));
+            history.push('/');
         }
     };
 }
