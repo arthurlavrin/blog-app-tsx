@@ -6,7 +6,7 @@ So this is a simple blog MVP. It will have Posts and Comments features.
 
 - The blog have Latest Posts page (`/` route)
 - The blog have Post page (`/posts/:postId` route)
-- The blog have Create Post page (`/posts/new` route)
+- The blog have Create Post page (`/posts/post-creator` route)
 - User is able to create a new post
 
 ## Technical side
